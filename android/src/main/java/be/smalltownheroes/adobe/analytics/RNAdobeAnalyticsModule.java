@@ -28,6 +28,8 @@ import com.adobe.mobile.MediaState;
 import com.adobe.mobile.Visitor;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 
+import be.smalltownheroes.adobe.analytics.util.MapUtil;
+
 public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
 
 	private final ReactApplicationContext reactContext;
@@ -160,7 +162,7 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
 	}
 
 	private Map<String, Object> convertReadableMapToHashMap(ReadableMap readableMap) {
-		return readableMap.toHashMap();
+		return MapUtil.toMap(readableMap);
 	}
 
 }
