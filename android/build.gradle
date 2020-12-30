@@ -1,36 +1,53 @@
 buildscript {
     repositories {
-        jcenter()
+        maven {
+            url 'https://repo.eachscape.net/repository/maven-android-all'
+            name 'eachscape'
+        }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:4.1.0'
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
+
     lintOptions {
         abortOnError false
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile './src/main/AndroidManifest.xml'
+            java.srcDirs = ['./src/main/java']
+            jniLibs.srcDirs = ['libs']
+            res.srcDirs = ['./src/main/res']
+        }
     }
 }
 
 repositories {
-    mavenCentral()
+    maven {
+        url 'https://repo.eachscape.net/repository/maven-android-all'
+        name 'eachscape'
+    }
 }
 
+
 dependencies {
-    compile 'com.facebook.react:react-native:+'
-    compile 'com.adobe.mobile:adobeMobileLibrary:4.14.0'
+    implementation 'com.facebook.react:react-native:+'
+    implementation 'com.adobe.mobile:adobeMobileLibrary:4.14.0'
     implementation "com.google.android.gms:play-services-ads-identifier:16.0.0"
 }
